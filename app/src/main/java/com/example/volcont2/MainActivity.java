@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final Handler handler = new Handler();
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnDelay120 = findViewById(R.id.btnDelay120);
         Button btnDelay180 = findViewById(R.id.btnDelay180);
         Button btnDelay240 = findViewById(R.id.btnDelay240);
-        Button btnDelay600 = findViewById(R.id.btnDelay600);
+        Button btnDelay720 = findViewById(R.id.btnDelay720);
 
         Button btnUSB = findViewById(R.id.btnUSB);
         Button btnOptical = findViewById(R.id.btnOptical);
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDelay120.setOnClickListener(this);
         btnDelay180.setOnClickListener(this);
         btnDelay240.setOnClickListener(this);
-        btnDelay600.setOnClickListener(this);
+        btnDelay720.setOnClickListener(this);
         btnUSB.setOnClickListener(this);
         btnOptical.setOnClickListener(this);
         btnMute.setOnClickListener(this);
@@ -194,9 +195,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.getId() == R.id.btnDelay240) {
             new FetchDataTask("Delay/240").execute();
             showToast("PowerOff delay: 4 h");
-        } else if (v.getId() == R.id.btnDelay600) {
-            new FetchDataTask("Delay/600").execute();
-            showToast("PowerOff delay: 10 h");
+        } else if (v.getId() == R.id.btnDelay720) {
+            new FetchDataTask("Delay/720").execute();
+            showToast("PowerOff delay: 12 h");
         } else if (v.getId() == R.id.btnUSB) {
             new FetchDataTask("USB").execute();
             showToast("Input: USB selected");
@@ -287,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new FetchDataTask("VolUp").execute();
                 Log.d("LongPRun", "longPress: Up");
                 // Schedule the next execution after 100 milliseconds
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 200);
             }
         }
     };
@@ -300,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new FetchDataTask("VolDown").execute();
                 Log.d("LongPRun", "longPress: Down");
                 // Schedule the next execution after 100 milliseconds
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 200);
             }
         }
     };
@@ -313,6 +314,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast toast = Toast.makeText(context, message, duration);
         toast.show();
     }
+
+
+
 
 }
 
